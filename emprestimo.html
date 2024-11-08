@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo Emprestimo</title>
+    <script>
+        function calcularEmprestimo() {
+            var rendaMensal = parseFloat(document.getElementById('rendaMensal').value);
+            var valorEmprestimo = parseFloat(document.getElementById('valorEmprestimo').value);
+            var numPrestacoes = parseInt(document.getElementById('numPrestacoes').value);
+
+            var limiteEmprestimo = 10 * rendaMensal;
+            var limitePrestacao = 0.3 * rendaMensal;
+            var prestacao = valorEmprestimo / numPrestacoes;
+
+            if (valorEmprestimo <= limiteEmprestimo && prestacao <= limitePrestacao) {
+                document.getElementById('resultado').innerText = "Empréstimo pode ser concedido.";
+            } else {
+                document.getElementById('resultado').innerText = "Empréstimo não pode ser concedido.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Algoritmo: Empréstimo</h1>
+    <label for="rendaMensal">Digite a renda mensal do solicitante:</label>
+    <input type="number" id="rendaMensal" step="0.01"><br><br>
+
+    <label for="valorEmprestimo">Digite o valor total do empréstimo solicitado:</label>
+    <input type="number" id="valorEmprestimo" step="0.01"><br><br>
+
+    <label for="numPrestacoes">Digite o número de prestações desejadas:</label>
+    <input type="number" id="numPrestacoes"><br><br>
+
+    <button onclick="calcularEmprestimo()">Verificar Empréstimo</button>
+
+    <p id="resultado"></p>
+</body>
+</html>
